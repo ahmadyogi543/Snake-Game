@@ -1,4 +1,4 @@
-//Function constructor for making snake object
+//Function constructor untuk membuat objek ular
 
 function Snake(x,y,color){
 	this.x = x;
@@ -7,6 +7,7 @@ function Snake(x,y,color){
 	this.dy = 0;
 	this.size = scl;
 	this.color = color;
+	this.hitsBorder = false;
 
 	this.show = function(){
 		fill(this.color);
@@ -17,10 +18,34 @@ function Snake(x,y,color){
 
 	this.update = function(){
 		
-		//Pergerakan ular
+		//Laju ular
 		this.x += this.dx;
 		this.y += this.dy;
 
+		//hits border
+		if(this.x < 6*scl){
+			this.x = width - 7*scl;
+		}
+		else if(this.x > width - 7*scl){
+			this.x = 6*scl;
+		}
+		else if(this.y < 6*scl){
+			this.y = height - 7*scl;
+		}
+		else if(this.y > height - 7*scl){
+			this.y = 6*scl;
+		}
+
+	}
+
+	this.isEats = function(food){
+		return this.x === food.x && this.y === food.y;
+	}
+
+	this.resetState = function(){
+		this.x = width/2;
+		this.y = height/2;
+		this.dx = this.dy = 0;
 	}
 
 	this.setSpeed = function(dx,dy){
