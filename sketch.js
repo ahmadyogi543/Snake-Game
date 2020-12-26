@@ -11,6 +11,9 @@ let border;
 //Makanan ular
 let food;
 
+//warna backgroung game
+const bgCol = 125;
+
 //Badan ular
 let bodies = [];
 
@@ -79,7 +82,7 @@ function setup(){
 
 //Mengambar semua objek di kanvas
 function draw(){
-	background(51);
+	background(bgCol);
 
 	border.show();
 	
